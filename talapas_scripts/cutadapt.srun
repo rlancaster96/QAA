@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#SBATCH --partition=compute
+#SBATCH --job-name=cutadapt
+#SBATCH --cpus-per-task=4
+#SBATCH --nodes=1
+#SBATCH --account=bgmp
+#SBATCH --mem=16G
+
+conda activate rna_qc
+
+/usr/bin/time -v cutadapt -a AGATCGGAAGAGCACACGTCTGAACTCCAGTCA -A AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT -o 27_4C_mbnl_S19_L008_R1_001.fastq.gz_trimmed.fastq.gz -p 27_4C_mbnl_S19_L008_R2_001_trimmed.fastq.gz /projects/bgmp/shared/2017_sequencing/demultiplexed/27_4C_mbnl_S19_L008_R1_001.fastq.gz /projects/bgmp/shared/2017_sequencing/demultiplexed/27_4C_mbnl_S19_L008_R2_001.fastq.gz
+/usr/bin/time -v cutadapt -a AGATCGGAAGAGCACACGTCTGAACTCCAGTCA -A AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT -o 28_4D_mbnl_S20_L008_R1_001.fastq.gz_trimmed.fastq.gz -p 28_4D_mbnl_S20_L008_R2_001_trimmed.fastq.gz /projects/bgmp/shared/2017_sequencing/demultiplexed/28_4D_mbnl_S20_L008_R1_001.fastq.gz /projects/bgmp/shared/2017_sequencing/demultiplexed/28_4D_mbnl_S20_L008_R2_001.fastq.gz

@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH --partition=interactive
+#SBATCH --job-name=runstar
+#SBATCH --time=0-03:00:00
+#SBATCH --cpus-per-task=8
+#SBATCH --account=bgmp
+#SBATCH --mem=32G
+#SBATCH --reservation=bgmp-res
+
+conda activate qaa_2
+
+/usr/bin/time -v \
+STAR --runThreadN 8 \
+--runMode genomeGenerate \
+--genomeDir /gpfs/projects/bgmp/rubenl/bioinfo/Bi623/QAA/align/Mus_musculus.GRCm39.dna.ens110.STAR_2.7.10b \
+--genomeFastaFiles /gpfs/projects/bgmp/rubenl/bioinfo/Bi623/QAA/align/ensembl_files/Mus_musculus.GRCm39.dna.primary_assembly.fa \
+--sjdbGTFfile /gpfs/projects/bgmp/rubenl/bioinfo/Bi623/QAA/align/ensembl_files/Mus_musculus.GRCm39.110.gtf \

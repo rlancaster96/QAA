@@ -1,0 +1,32 @@
+#!/bin/bash
+
+#SBATCH --partition=compute
+#SBATCH --job-name=trim
+#SBATCH --cpus-per-task=4
+#SBATCH --nodes=1
+#SBATCH --account=bgmp
+#SBATCH --mem=16G
+
+conda activate rna_qc
+
+inputFile1="/projects/bgmp/shared/2017_sequencing/demultiplexed/27_4C_mbnl_S19_L008_R1_001.fastq.gz"
+inputFile2="/projects/bgmp/shared/2017_sequencing/demultiplexed/27_4C_mbnl_S19_L008_R2_001.fastq.gz"
+outputFile1P="/projects/bgmp/rubenl/bioinfo/Bi623/QAA/trimmomatic/27R1_P.fastq.gz"
+outputFile1U="/projects/bgmp/rubenl/bioinfo/Bi623/QAA/trimmomatic/27R1_U.fastq.gz"
+outputFile2P="/projects/bgmp/rubenl/bioinfo/Bi623/QAA/trimmomatic/27R2_P.fastq.gz"
+outputFile2U="/projects/bgmp/rubenl/bioinfo/Bi623/QAA/trimmomatic/27R2_U.fastq.gz"
+
+echo "Sample 27"
+echo "/usr/bin/time -v trimmomatic PE -phred33 $inputFile1 $inputFile2 $outputFile1P $outputFile1U $outputFile2P $outputFile2U LEADING:3 TRAILING:3 SLIDINGWINDOW:5:15 MINLEN:35"
+/usr/bin/time -v trimmomatic PE -phred33 $inputFile1 $inputFile2 $outputFile1P $outputFile1U $outputFile2P $outputFile2U LEADING:3 TRAILING:3 SLIDINGWINDOW:5:15 MINLEN:35
+
+inputFile1="/projects/bgmp/shared/2017_sequencing/demultiplexed/28_4D_mbnl_S20_L008_R1_001.fastq.gz"
+inputFile2="/projects/bgmp/shared/2017_sequencing/demultiplexed/28_4D_mbnl_S20_L008_R2_001.fastq.gz"
+outputFile1P="/projects/bgmp/rubenl/bioinfo/Bi623/QAA/trimmomatic/28R1_P.fastq.gz"
+outputFile1U="/projects/bgmp/rubenl/bioinfo/Bi623/QAA/trimmomatic/28R1_U.fastq.gz"
+outputFile2P="/projects/bgmp/rubenl/bioinfo/Bi623/QAA/trimmomatic/28R2_P.fastq.gz"
+outputFile2U="/projects/bgmp/rubenl/bioinfo/Bi623/QAA/trimmomatic/28R2_U.fastq.gz"
+
+echo "Sample 28"
+echo "/usr/bin/time -v trimmomatic PE -phred33 $inputFile1 $inputFile2 $outputFile1P $outputFile1U $outputFile2P $outputFile2U LEADING:3 TRAILING:3 SLIDINGWINDOW:5:15 MINLEN:35"
+/usr/bin/time -v trimmomatic PE -phred33 $inputFile1 $inputFile2 $outputFile1P $outputFile1U $outputFile2P $outputFile2U LEADING:3 TRAILING:3 SLIDINGWINDOW:5:15 MINLEN:35
